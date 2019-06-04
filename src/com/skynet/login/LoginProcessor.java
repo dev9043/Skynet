@@ -13,7 +13,7 @@ import javax.swing.JProgressBar;
 import javax.swing.JTextField;
 
 public class LoginProcessor implements Runnable {
-
+	// These below all are instance variable or reference instance variable 
 	private boolean isStartLoginProcess;
 
 	private JProgressBar progressBar;
@@ -29,14 +29,19 @@ public class LoginProcessor implements Runnable {
 	private Statement statement;
 
 	private ResultSet resultSet;
-
+	// 
+	
+	// Method -setter method
 	public void setStartLoginProcess(boolean isStartLoginProcess) {
 		this.isStartLoginProcess = isStartLoginProcess;
 	}
 
+	// This is parametarize constructor because its name is same as Class name
+	// and we are passing parameter to it (jo breket me band hai ye local variable hai)
 	public LoginProcessor(JProgressBar progressBar, JComboBox<String> uTypeComboBox, JTextField userIdTxtField,
 			JPasswordField passwordTxtField) {
-		
+
+		//jo this ke sath hai ye instance variable= bad wala local variablea hai)
 		this.progressBar = progressBar;
 
 		this.uTypeComboBox = uTypeComboBox;
@@ -44,7 +49,7 @@ public class LoginProcessor implements Runnable {
 		this.userIdTxtField = userIdTxtField;
 
 		this.passwordTxtField = passwordTxtField;
-		
+
 		checkDbConnecton();
 	}
 
@@ -58,7 +63,7 @@ public class LoginProcessor implements Runnable {
 				} else {
 					statement = dbConnectin.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,
 							ResultSet.CONCUR_UPDATABLE);
-					resultSet = statement.executeQuery("select * from user_detail");
+					resultSet = statement.executeQuery("SELECT * FROM USER_DETAIL");
 					boolean flag1 = false;
 					String usertype = "";
 					String userid = "";
@@ -102,7 +107,7 @@ public class LoginProcessor implements Runnable {
 	private void checkDbConnecton() {
 
 		try {
-			
+
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 			dbConnectin = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", "skynet", "skynet");
 
