@@ -28,6 +28,7 @@ public class Login extends JFrame implements Runnable, ActionListener {
 
 	private JProgressBar progressBar;
 
+	//ye constructor hai, class ke name ko constructor bolenge,and pehla letar ceptal se stater hai, 
 	public Login() {
 		
 		Container container = this.getContentPane();
@@ -200,6 +201,7 @@ public class Login extends JFrame implements Runnable, ActionListener {
 		 * if(ae.getSource()==change) { changepass obj=new changepass(); }
 		 */
 	   }
+
 	public static void main(String args[]) {
 		new Login();
 	}
